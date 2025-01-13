@@ -51,4 +51,11 @@ impl Blockchain {
     pub fn iter(&self) -> std::slice::Iter<'_, Block> {
         self.items.iter()
     }
+
+    // given a string content, add a new block and append it to the chain
+    pub fn write_to_chain(&mut self, content: String) {
+        let last_block = &self.items[self.items.len() -1];
+        let prev_hash = last_block.compute_hash();
+        self.push(content, prev_hash);
+    }
 }

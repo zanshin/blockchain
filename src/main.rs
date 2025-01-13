@@ -9,9 +9,9 @@ fn main() {
     blockchain.push(String::from("Genesis"), 0);
 
     // add more blocks to the chain
-    blockchain.push(String::from("Transaction 1"), 0);
-    blockchain.push(String::from("Transaction 2"), 0);
-    blockchain.push(String::from("Transaction 3"), 0);
+    blockchain.write_to_chain(String::from("Transaction 1"));
+    blockchain.write_to_chain(String::from("Transaction 2"));
+    blockchain.write_to_chain(String::from("Transaction 3"));
 
     // display the contents of the chain
     println!("The blockchain contains:");
@@ -23,13 +23,6 @@ fn main() {
         println!("Hash value of block: content: {}, hash: {} is {}", 
             block.content, block.hash, hash_value);
     }
-    
-    if let Some(removed) = blockchain.pop() {
-        println!("Removed element: {}, {}", removed.content, removed.hash);
-    }
-
-    println!("The blockchain contains after removeing last node:");
-    blockchain.display();
     
 }
 
